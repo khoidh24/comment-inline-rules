@@ -1,0 +1,55 @@
+{
+  "name": "no-inline-comment",
+  "version": "1.0.0",
+  "description": "Install 'no inline comment' coding rules for AI code editors (Cursor, Windsurf, VSCode, Codex, Cline, and more)",
+  "main": "bin/cli.js",
+  "bin": {
+    "no-inline-comment": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node bin/cli.js --help"
+  },
+  "keywords": [
+    "cursor",
+    "windsurf",
+    "copilot",
+    "codex",
+    "cline",
+    "claude",
+    "gemini",
+    "kiro",
+    "roo-code",
+    "trae",
+    "junie",
+    "goose",
+    "continue",
+    "aider",
+    "zed",
+    "ai",
+    "ai-rules",
+    "agent-rules",
+    "coding-rules",
+    "comments",
+    "jsdoc",
+    "best-practices",
+    "code-style",
+    "no-comments"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "bugs": {
+    "url": ""
+  },
+  "files": [
+    "bin/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

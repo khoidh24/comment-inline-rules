@@ -1,0 +1,97 @@
+---
+description: description: No inline comments. Use JSDoc. Only comment for truly complex logic.
+
+globs:
+
+- "\*_/_.js"
+- "\*_/_.jsx"
+- "\*_/_.ts"
+- "\*_/_.tsx"
+
+alwaysApply: true
+---
+
+# Comment policy (STRICT)
+
+## Absolute rules
+
+- DO NOT add inline or line-by-line comments (e.g. `// do X`, `// set y`).
+- Prefer clear naming + small functions over comments.
+- When adding a new feature/function/class/module, write JSDoc for:
+  - exported functions/classes
+  - public methods
+  - non-trivial internal helpers
+
+## No emoji in JSDoc/comments
+
+- DO NOT use emojis anywhere in:
+  - JSDoc blocks (`/** ... */`)
+  - block comments (`/* ... */`)
+  - line comments (`// ...`)
+- Keep tone professional and ASCII/plain text.
+
+## JSDoc requirements
+
+- Must include: purpose (1 sentence), @param, @returns (or void), and important constraints.
+- Include examples only when behavior is subtle.
+
+## When comments are allowed (rare)
+
+Only add a single block comment ABOVE a logic block if ALL are true:
+
+- The logic is algorithmically or conceptually complex AND
+- The intent / invariants / pitfalls cannot be made obvious by refactor + naming.
+
+Allowed comment format (focus on WHY, no emoji):
+/\*\*
+
+- WHY: ...
+- Invariants: ...
+- Pitfalls/Edge cases: ...
+- References (optional): link to spec/ticket/doc
+  \*/
+
+## What to do instead of comments
+
+- Refactor into small pure functions
+- Use descriptive names
+- Add tests that demonstrate edge cases
+
+## Examples
+
+### Good (JSDoc, no emoji)
+
+```ts
+/**
+ * Normalizes a user-provided phone number into E.164-like format.
+ * @param input - Raw phone number string from UI.
+ * @param defaultCountry - ISO country code used when input has no prefix.
+ * @returns Normalized string or null if invalid.
+ */
+export function normalizePhone(
+  input: string,
+  defaultCountry: string
+): string | null {
+  // implementation...
+}
+```
+
+### Bad (emoji in comments/JSDoc)
+
+```ts
+/** ✅ Do this quickly */
+export function f() {}
+
+/* TODO 🚀 improve performance */
+```
+
+### Bad (line-by-line comments)
+
+```ts
+// get user
+const user = await getUser(id);
+// update user
+user.name = name;
+// save user
+await saveUser(user);
+```

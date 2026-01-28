@@ -1,0 +1,102 @@
+---
+description: "(MANUAL) Clean comments: remove inline comments, replace with JSDoc, keep only complex-logic comments, no emoji."
+
+globs:
+  - "**/*.{js,jsx,ts,tsx}"
+
+alwaysApply: false
+---
+
+# MANUAL SKILL: Clean up comments (remove inline, add JSDoc)
+
+## When to use
+
+Only run this skill when explicitly requested (manual invocation). Do not apply automatically.
+
+## Goal
+
+Refactor code to:
+
+- Remove low-signal / line-by-line comments.
+- Replace descriptive comments with proper JSDoc on function/class/module boundaries.
+- Keep comments ONLY when logic is truly complex (WHY / invariants / pitfalls), as a single block comment above the relevant block.
+- No emoji anywhere in comments/JSDoc.
+
+## Hard rules
+
+1. DO NOT leave line-by-line comments explaining obvious steps.
+2. DO NOT add emoji in any comment/JSDoc.
+3. Prefer refactor (naming, small functions) over comments.
+4. Keep “directive comments” that affect tooling/behavior:
+   - eslint / tslint directives (e.g. `// eslint-disable...`, `/* eslint ... */`)
+   - TypeScript directives (`// @ts-ignore`, `// @ts-expect-error`, `// @ts-nocheck`)
+   - formatter directives (`// prettier-ignore`)
+   - build/runtime directives used by frameworks (keep as-is if required)
+5. Keep required legal headers / license banners at file top if present.
+
+## What counts as “complex logic comment” (allowed)
+
+Only keep a single block comment placed ABOVE the complex logic block if it contains:
+
+- WHY: design reason / trade-off not obvious from code
+- Invariants / assumptions
+- Pitfalls / edge cases / concurrency / precision / timezone / security concerns
+- Brief reference to spec/ticket/doc (optional)
+
+Allowed format (NO emoji):
+/\*\*
+
+- WHY: ...
+- Invariants: ...
+- Pitfalls/Edge cases: ...
+- References (optional): ...
+  \*/
+
+## What to delete (default)
+
+- Step-by-step comments like `// get user`, `// call api`, `// update state`
+- Redundant comments that restate variable/function names
+- Commented-out code (remove, unless it’s a required conditional compilation marker; if unsure, remove and rely on git history)
+
+## Convert comments to JSDoc (preferred)
+
+When a comment describes behavior of a function/class/module, convert into JSDoc and attach it to that symbol.
+
+### JSDoc requirements
+
+For any exported function/class, public method, or non-trivial helper you touch:
+
+- 1 sentence purpose
+- @param for each param
+- @returns (or void)
+- Include constraints/edge cases if important
+- NO emoji
+
+Example:
+/\*\*
+
+- Parses a user-provided date string using a fixed timezone.
+- @param input - Date string from UI.
+- @param tz - IANA timezone used for interpretation.
+- @returns A Date instance, or null if invalid.
+  \*/
+
+## Procedure (do this every time skill is invoked)
+
+1. Read the target file(s) fully (or at least all impacted sections).
+2. Remove line-by-line comments and redundant comments.
+3. Refactor to make intent obvious:
+   - rename variables
+   - extract small functions
+   - reduce nesting
+4. Add/upgrade JSDoc on boundaries (functions/classes/modules).
+5. Only keep a complex-logic block comment if refactor + JSDoc cannot express the WHY/invariants/pitfalls.
+6. Final scan:
+   - ensure no emoji in any comments/JSDoc
+   - ensure no stray inline comments remain (except directives)
+   - ensure TypeScript/ESLint directive comments (if any) still correct
+
+## Output expectation (when run by an agent)
+
+- Provide the updated code (or diff) with comment cleanup applied.
+- If a comment is kept, justify implicitly by its content (WHY/invariants/pitfalls), not by meta explanation.
