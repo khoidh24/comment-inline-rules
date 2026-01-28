@@ -800,7 +800,7 @@ async function main() {
     console.log(`    [ok] ${EDITORS[editorKey].name}`);
   }
 
-  console.log(`\n[*] Install complete! (${getScopeLabel(scope)})\n`);
+  console.log(`\n[*] Install complete!\n`);
 }
 
 main().catch(console.error);
