@@ -1,6 +1,6 @@
 {
   "name": "no-inline-comment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Install 'no inline comment' coding rules for AI code editors (Cursor, Windsurf, VSCode, Codex, Cline, and more)",
   "main": "bin/cli.js",
   "bin": {
@@ -35,15 +35,15 @@
     "code-style",
     "no-comments"
   ],
-  "author": "",
+  "author": "khoidh24",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/khoidh24/comment-inline-rules.git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/khoidh24/comment-inline-rules#readme",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/khoidh24/comment-inline-rules/issues"
   },
   "files": [
     "bin/",
