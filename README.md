@@ -148,6 +148,89 @@ npx comment-rules --list
 | Zed            | `.zed/rules/jsdoc-over-inline-comments.md`         |
 | Zencoder       | `.zencoder/rules/jsdoc-over-inline-comments.md`    |
 
+## Manual Installation
+
+If you prefer not to use npx, you can manually copy the rule content to your editor's config file.
+
+### CLI Agents (Single File)
+
+These agents use a single markdown file in your project root:
+
+| Agent       | File             | Command                                                                                                                 |
+| ----------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Claude Code | `CLAUDE.md`      | `curl -o CLAUDE.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc`      |
+| Gemini CLI  | `GEMINI.md`      | `curl -o GEMINI.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc`      |
+| Codex       | `AGENTS.md`      | `curl -o AGENTS.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc`      |
+| Aider       | `CONVENTIONS.md` | `curl -o CONVENTIONS.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc` |
+
+### Text Editors (Config Directory)
+
+These editors use a rules directory:
+
+**Cursor:**
+
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/jsdoc-over-inline-comments.mdc https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+**Windsurf:**
+
+```bash
+curl -o .windsurfrules https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+**GitHub Copilot:**
+
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+**Cline:**
+
+```bash
+curl -o .clinerules https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+**Roo Code:**
+
+```bash
+mkdir -p .roo/rules
+curl -o .roo/rules/jsdoc-over-inline-comments.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+**Continue:**
+
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/jsdoc-over-inline-comments.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+### Global Installation (Home Directory)
+
+To install globally, use `~/` prefix:
+
+```bash
+# Cursor (global)
+mkdir -p ~/.cursor/rules
+curl -o ~/.cursor/rules/jsdoc-over-inline-comments.mdc https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+
+# Claude Code (global)
+curl -o ~/CLAUDE.md https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc
+```
+
+### PowerShell (Windows)
+
+```powershell
+# Cursor
+New-Item -ItemType Directory -Force -Path .cursor\rules
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc" -OutFile ".cursor\rules\jsdoc-over-inline-comments.mdc"
+
+# Claude Code
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/khoidh24/comment-rules/master/jsdoc-over-inline-comments.mdc" -OutFile "CLAUDE.md"
+```
+
 ## The Rule
 
 ### Absolute Rules
