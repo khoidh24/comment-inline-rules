@@ -115,7 +115,7 @@ npx comment-rules --list
 | Editor         | Config File                                        |
 | -------------- | -------------------------------------------------- |
 | Aider          | `CONVENTIONS.md`                                   |
-| Antigravity    | `.agent/skills/jsdoc-over-inline-comments.md`      |
+| Antigravity    | `.agent/rules/jsdoc-over-inline-comments.md`       |
 | Claude Code    | `CLAUDE.md`                                        |
 | Cline          | `.clinerules`                                      |
 | CodeBuddy      | `.codebuddy/rules/jsdoc-over-inline-comments.md`   |
